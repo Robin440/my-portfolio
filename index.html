@@ -1,859 +1,511 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robin Rajan - Python Backend Developer | Django Specialist</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Robin Rajan is a Python Backend Developer specializing in Django Rest Framework (DRF). Discover my portfolio and latest projects." />
     <meta name="keywords" content="Robin Rajan, Python Developer, Django Developer, Backend Developer, Web Development, Django Rest Framework, Python Programming" />
     <meta name="author" content="Robin Rajan" />
 
-    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Robin Rajan - Python Backend Developer" />
     <meta property="og:description" content="Explore the portfolio of Robin Rajan, a skilled Python Backend Developer specializing in Django Rest Framework." />
-    <meta property="og:image" content="https://play-lh.googleusercontent.com/ShO8lmMq5rNQa16SxMCGLZ1w4oS-oM17mPWlxU9UaYSzzonFZ2hY6pdqG1Zo2lyGYQ" /> <!-- Replace with actual image URL -->
+    <meta property="og:image" content="https://play-lh.googleusercontent.com/ShO8lmMq5rNQa16SxMCGLZ1w4oS-oM17mPWlxU9UaYSzzonFZ2hY6pdqG1Zo2lyGYQ" />
     <meta property="og:url" content="https://robinrajan.com" />
     <meta property="og:site_name" content="Robin Rajan Portfolio" />
 
-    <!-- Twitter Card Meta Tags for Social Media Sharing -->
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:title" content="Robin Rajan - Python Backend Developer" />
     <meta name="twitter:description" content="Discover the professional portfolio of Robin Rajan, Python Backend Developer with a focus on Django." />
-    <meta name="twitter:image" content="https://robinrajan.com/images/profile.jpg" /> <!-- Replace with actual image URL -->
+    <meta name="twitter:image" content="https://robinrajan.com/images/profile.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-	 <!-- Favicon -->
-	 <link rel="icon" href="/favicon.ico" type="image/x-icon">
-	 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Space+Mono|Kaushan+Script" rel="stylesheet">
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha384-gvzX6DEnhTCD5Qr4iyJF+Kew2xg3btEIt7kpkFJvsL5u5O7c/C79K2RTtJ5nq2Nt" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- Modernizr for Feature Detection -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
-    <!-- Conditional Script for IE9 or below -->
-    <!--[if lt IE 9]>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- jQuery for Form Submission -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .navbar {
+            transition: background-color 0.3s ease;
+        }
+        .navbar.scrolled {
+            background-color: rgba(30, 58, 138, 0.9);
+        }
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .timeline-panel {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .timeline-panel:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .profile-thumb {
+            width: 150px;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid #facc15;
+        }
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .btn-tech-blogs {
+            transition: background-color 0.3s ease;
+        }
+        .btn-tech-blogs:hover {
+            background-color: #facc15;
+        }
+        .form-control {
+            background: #1e293b;
+            border: none;
+            color: #e2e8f0;
+            border-radius: 5px;
+        }
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 5px #facc15;
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        .btn-primary {
+            background-color: #facc15;
+            color: #1e293b;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #eab308;
+        }
+        .gototop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #facc15;
+            color: #1e293b;
+            padding: 10px;
+            border-radius: 50%;
+            display: none;
+        }
+        .gototop.active {
+            display: block;
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Navbar -->
+    <nav class="navbar fixed top-0 w-full py-4 z-50">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <a href="#" class="text-2xl font-bold"></a>
+            <div class="space-x-6">
+                <a href="#home" class="hover:text-yellow-300 transition">Home</a>
+                <a href="#about" class="hover:text-yellow-300 transition">About</a>
+                <a href="#resume" class="hover:text-yellow-300 transition">Resume</a>
+                <a href="#services" class="hover:text-yellow-300 transition">Services</a>
+                <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-	<div class="fh5co-loader"></div>
+    <!-- Header Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center text-center section" style="background-image: url(images/cover_bg_3.jpg); background-size: cover; background-position: center;">
+        <div class="bg-black bg-opacity-50 w-full h-full flex items-center justify-center">
+            <div class="container mx-auto px-6">
+                <div class="profile-thumb" style="background-image: url(/images/pro.jpeg);"></div>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Robin Rajan</h1>
+                <h2 class="text-2xl md:text-3xl mb-4">Software Engineer / Python / Django Web Developer</h2>
+                <h4 class="text-lg mb-6">Please! Scroll down to read more about me</h4>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.facebook.com/profile.php?id=100011548658250&mibextid=LQQJ4d" class="text-2xl hover:text-yellow-300 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/in/robin-rajan-420699145/" class="text-2xl hover:text-yellow-300 transition"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Robin440" class="text-2xl hover:text-yellow-300 transition"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<div id="page">
-		<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner"
-			style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center">
-						<div class="display-t js-fullheight">
-							<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-								<div class="profile-thumb" style="background: url(/images/pro.jpeg);"></div>
-								<h1><span>Robin Rajan</span></h1>
-								<h2><span>Software Engineer/ Python / Django Web Developer</span></h2>
-								<h4><span>Please! Scroll down to read more about me</span></h4>
-								<p>
-								<ul class="fh5co-social-icons">
+    <!-- About Section -->
+    <section id="about" class="py-20 section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+                    <ul class="space-y-4">
+                        <li><span class="font-semibold">Full Name:</span> <a href="#" class="text-gray-300">Robin Rajan</a></li>
+                        <li><span class="font-semibold">Phone:</span> <a href="tel:+918086712029" class="text-gray-300">+91 8086712029</a></li>
+                        <li><span class="font-semibold">Email:</span> <a href="mailto:robinrajan440@gmail.com" class="text-gray-300">robinrajan440@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="md:col-span-2 bg-white bg-opacity-10 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-4">Hello There!</h3>
+                    <p class="text-lg mb-4">
+                        I'm Robin Rajan, a passionate Software Engineer with a keen interest in crafting robust and scalable web applications. With a background in computer science and hands-on experience in full-stack web development, I thrive on turning ideas into reality through elegant code and innovative solutions.
+                    </p>
+                    <h4 class="text-xl font-semibold mb-2">Technical Expertise</h4>
+                    <p class="text-lg mb-4">
+                        I specialize in leveraging the power of Python and Django to build dynamic and feature-rich web applications. My proficiency extends to:
+                    </p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li><strong>Python Development:</strong> I am well-versed in Python, using it to develop backend logic and scripting tasks efficiently.</li>
+                        <li><strong>Django Framework:</strong> My expertise lies in utilizing the Django framework to create secure, maintainable, and high-performance web applications. I am experienced in designing RESTful APIs, integrating third-party services, and optimizing database queries.</li>
+                        <li><strong>Frontend Technologies:</strong> I have a strong command of frontend technologies such as HTML, CSS, and JavaScript, enabling me to create seamless user experiences.</li>
+                        <li><strong>Database Management:</strong> I am skilled in working with various databases, including PostgreSQL and MySQL, ensuring data integrity and efficient retrieval.</li>
+                    </ul>
+                    <h4 class="text-xl font-semibold mb-2">What Sets Me Apart</h4>
+                    <p class="text-lg mb-4">
+                        I am not just a developer; I am a problem solver. I approach each project with a holistic mindset, considering both technical and user experience aspects. I believe in writing clean, modular, and well-documented code that not only meets project requirements but is also easily maintainable.
+                    </p>
+                    <h4 class="text-xl font-semibold mb-2">Open Source Contributions</h4>
+                    <p class="text-lg mb-4">
+                        I am an advocate for open source development and have actively contributed to projects on platforms like GitHub. My commitment to the community reflects my dedication to continuous learning and collaboration.
+                    </p>
+                    <h4 class="text-xl font-semibold mb-2">Let's Build Something Amazing</h4>
+                    <p class="text-lg">
+                        I am always eager to take on new challenges and collaborate on exciting projects. Whether you need a custom web application, API development, or a Django-based solution, I am here to bring your ideas to life. Feel free to explore my portfolio to see some of my recent work and don't hesitate to get in touch. Let's create something extraordinary together!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-									<li><a
-											href="https://www.facebook.com/profile.php?id=100011548658250&mibextid=LQQJ4d"><i
-												class="icon-facebook2"></i></a></li>
-									<li><a href="https://www.linkedin.com/in/robin-rajan-420699145/"><i
-												class="icon-linkedin2"></i></a></li>
+    <!-- Tech Blogs Button -->
+    <section class="py-10">
+        <div class="container mx-auto px-6 text-center">
+            <a href="tech-blogs.html" class="btn-tech-blogs bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition text-2xl">Tech Blogs <br><span class="text-base">Click Here</span></a>
+        </div>
+    </section>
 
-									<li><a href="https://github.com/Robin440"><i class="fa fa-github"
-												style="font-size:34px"></i></a></li>
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-gray-900 section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center">Resume</h2>
+            <div class="space-y-8">
+                <h3 class="text-2xl font-semibold text-center">Work Experience</h3>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Software Engineer</h4>
+                    <p class="text-gray-300">Navadhiti (Bangalore - India) Sept 2024 - Present</p>
+                    <ul class="list-disc pl-6 mt-2">
+                        <li>As a Software Engineer at Navadhiti, I specialize in backend development, utilizing Python frameworks to deliver high-performance applications and scalable solutions. My expertise includes building APIs, cloud deployment, and system optimization.</li>
+                        <li>Programming Languages: Python, Java, C</li>
+                        <li>Frameworks: Django, Flask, FastAPI</li>
+                        <li>Databases: MySQL, PostgreSQL</li>
+                        <li>Cloud Platforms: AWS</li>
+                        <li>Operating Systems: Ubuntu, Windows</li>
+                        <li>Web Servers: Nginx</li>
+                        <li>Agile Methodologies: Scrum</li>
+                        <li>Version Control Systems: Git, GitLab</li>
+                        <li>CI/CD Tools: Jenkins</li>
+                        <li>Testing Frameworks: Pytest</li>
+                        <li>Containerization & Deployment: Docker</li>
+                        <li>API Testing: Postman</li>
+                    </ul>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Backend Developer</h4>
+                    <p class="text-gray-300">Peerxp Vegastack (Bangalore - India) Feb 2024 - Present</p>
+                    <ul class="list-disc pl-6 mt-2">
+                        <li>As a Python Backend Developer, I design and implement server-side logic using Django Rest Framework (DRF) to build scalable and efficient web applications.</li>
+                        <li>Developed and maintained asynchronous task queues with Celery and RabbitMQ, improving application performance and reliability.</li>
+                        <li>Utilized Docker for containerization to streamline development, testing, and deployment processes.</li>
+                        <li>Employed Pandas and NumPy for data manipulation and analysis, enhancing data processing capabilities.</li>
+                        <li>Conducted API testing using Postman to ensure robust and error-free interfaces.</li>
+                        <li>Managed development environments and deployment processes on Ubuntu, ensuring smooth and consistent operations.</li>
+                        <li>Collaborated with cross-functional teams to define and develop new features, ensuring seamless integration and functionality.</li>
+                        <li>Prepared and maintained comprehensive documentation, including Standard Operating Procedures (SOPs) and work instructions.</li>
+                    </ul>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Process Coordinator</h4>
+                    <p class="text-gray-300">Al Shirawi - Scania Automotive (Dubai - UAE) Jan 2022 - Nov 2022</p>
+                    <ul class="list-disc pl-6 mt-2">
+                        <li>Evaluating the process to identify improvement strategies and increase efficiency and supervising technicians to complete jobs within time limits.</li>
+                        <li>Implementing lean management tools like 5S, Continuous Improvement, Elimination of non-value added waste like Transportation, Inventories, moments, waiting, overproduction, over process and defects (TIMWOOD).</li>
+                    </ul>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Team Leader & Production Associate</h4>
+                    <p class="text-gray-300">Festo - German MNC (Bangalore - India) July 2017 - Nov 2021</p>
+                    <ul class="list-disc pl-6 mt-2">
+                        <li>As a team leader, I coordinated a team cluster including machining and assembly as per the value stream guideline and by monitoring KPI.</li>
+                        <li>Designed fixture for laser marking station to reduce error by 25%.</li>
+                        <li>Directed a team, which includes 20 members to achieve organizational goals: Quality, Cost, and Delivery.</li>
+                        <li>Created mechanical Poke Yoke to fixtures for reducing accidents by 80%.</li>
+                        <li>Reduced cycle time of production by 20% by introducing hand tools as part of lean six sigma.</li>
+                        <li>Prepared SOP and work instructions.</li>
+                        <li>Assembled and leak-tested pneumatic cylinders, one-direction & two-way flow control valves, and Direction Control Valves.</li>
+                    </ul>
+                </div>
+                <h3 class="text-2xl font-semibold text-center mt-8">Education</h3>
+				<div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Masters in Computer Applications</h4>
+                    <p class="text-gray-300">Indira Gandhi National Open University
+					</p>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Masters in Business Administration</h4>
+                    <p class="text-gray-300">Lincoln University</p>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Bachelors in Business Administration</h4>
+                    <p class="text-gray-300">NEFTU</p>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Certified Management Accountant (Foundation)</h4>
+                    <p class="text-gray-300">Institute Of Cost Accountants Of India - Kolkata</p>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Mechanical Engineering</h4>
+                    <p class="text-gray-300">Department of Technical Education - Chennai</p>
+                </div>
+                <h3 class="text-2xl font-semibold text-center mt-8">Certificates</h3>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Lean Six Sigma Foundations</h4>
+                    <p class="text-gray-300">National Association of State Boards of Accountancy (NASBA)</p>
+                    <p class="text-lg">Instructional Delivery Method: QAS Self Study. CPE credits granted based on a 50-minute hour. LinkedIn is registered with NASBA as a sponsor of continuing professional education.</p>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Six Sigma: Green Belt</h4>
+                    <p class="text-gray-300">Project Management Institute, Inc.</p>
+                    <p class="text-lg">The PMI Registered Education Provider logo is a registered mark of the Project Management Institute, Inc.</p>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Soft Skills & Employability Skills Training</h4>
+                    <p class="text-gray-300">Cambridge University Press</p>
+                    <p class="text-lg">Cambridge Partnership for Education aims to improve education systems across the globe through partnerships with various governments.</p>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Microsoft Intermediate Program</h4>
+                    <p class="text-gray-300">Microsoft Imagine Academy</p>
+                    <p class="text-lg">The Microsoft Imagine Academy program was transitioned and sunset on December 30, 2022.</p>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Python Master</h4>
+                    <p class="text-gray-300">Udemy</p>
+                    <p class="text-lg">Beginners Guide Into Python: Become a Master At Python</p>
+                </div>
+                <div class="timeline-panel">
+                    <h4 class="text-xl font-semibold">Object Oriented Programming</h4>
+                    <p class="text-gray-300">Udemy</p>
+                    <p class="text-lg">Object Oriented Programming (OOPS)</p>
+                </div>
+                <h3 class="text-2xl font-semibold text-center mt-8">Skills</h3>
+                <div class="timeline-panel">
+                    <ul class="list-disc pl-6">
+                        <li>Python</li>
+                        <li>Django</li>
+                        <li>Django Template Language</li>
+                        <li>RDBMS</li>
+                        <li>Django ORM (Object Relation Mapper)</li>
+                        <li>PostgreSQL</li>
+                        <li>Bootstrap</li>
+                        <li>HTML 5</li>
+                        <li>CSS 3</li>
+                        <li>Object Oriented Programming</li>
+                        <li>Microsoft Office</li>
+                        <li>JavaScript (Basic)</li>
+                        <li>Java (Basic)</li>
+                        <li>React</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Services Section -->
+    <section id="services" class="py-20 section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center">My Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="service-card bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                    <i class="fas fa-paint-brush text-4xl mb-4 text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+                    <p class="text-gray-300">Whether you're embarking on a new project, upgrading an existing application, or exploring the capabilities of Python Django, I am here to guide you through the journey of building robust and scalable web solutions. Let's turn your ideas into reality with the power of Python Django web development!</p>
+                </div>
+                <div class="service-card bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                    <i class="fas fa-database text-4xl mb-4 text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold mb-2">Database Design</h3>
+                    <p class="text-gray-300">Whether you're starting a new project or looking to optimize an existing database, I am here to leverage the power of PostgreSQL to design a scalable, efficient, and secure database solution tailored to your unique needs. Let's embark on the journey of creating a data infrastructure that supports your business goals.</p>
+                </div>
+                <div class="service-card bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                    <i class="fas fa-tools text-4xl mb-4 text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold mb-2">Web Maintenance & Support</h3>
+                    <p class="text-gray-300">Emergencies don't wait for office hours, and neither do we. Our 24/7 support ensures that you have the assistance you need, precisely when you need it. Let's work together to keep your web applications running smoothly, securely, and ready to meet the evolving needs of your users.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-								</ul>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center">Contact Me</h2>
+            <p class="text-lg text-center mb-8">Let's work together to keep your web applications running smoothly, securely, and ready to meet the evolving needs of your users.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-4">Get in Touch</h3>
+                    <form id="submit-form">
+                        <div class="mb-4">
+                            <input type="text" id="fname" class="form-control w-full p-3" placeholder="Your firstname" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="text" id="lname" class="form-control w-full p-3" placeholder="Your lastname" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="text" id="email" class="form-control w-full p-3" placeholder="Your email address" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="text" id="subject" class="form-control w-full p-3" placeholder="Your subject of this message" required>
+                        </div>
+                        <div class="mb-4">
+                            <textarea name="message" id="message" cols="30" rows="10" class="form-control w-full p-3" placeholder="Say something about us" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary px-6 py-3 rounded-full font-semibold">Send Message</button>
+                    </form>
+                </div>
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-4">Find Me</h3>
+                    <iframe class="w-full h-96 rounded-lg" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=bommanahalli+(My%20Business%20Name)&amp;t=k&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<div id="fh5co-about" class="animate-box">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>About Me</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<ul class="info">
-							<li><span class="first-block">Full Name:</span><span class="second-block"><a
-										style="color: gray;" href="#">Robin Rajan</a></span></li>
-							<li><span class="first-block">Phone:</span><span class="second-block"> <a
-										style="color: gray;" href="tel:+918086712029">+91 8086712029</a></span></li>
-							<li><span class="first-block">Email:</span><span class="second-block"><a
-										style="color: gray;"
-										href="mailto:robinrajan440@outlook.com">robinrajan440@outlook.com</a></span>
-							</li>
+    <!-- Footer -->
+    <footer class="py-10 bg-gray-900 text-center">
+        <p>© 2025 Robin Rajan. All rights reserved.</p>
+        <div class="mt-4 space-x-4">
+            <a href="https://www.facebook.com/profile.php?id=100011548658250&mibextid=LQQJ4d" class="hover:text-yellow-400"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/robin-rajan-420699145/" class="hover:text-yellow-400"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Robin440" class="hover:text-yellow-400"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
 
-							<!-- <li><span class="first-block">Address:</span><span class="second-block">Schenkenbergstraße 86, 73733 Esslingen am Neckar, Germany</span></li> -->
-						</ul>
-					</div>
-					<div class="col-md-8">
-						<h2>Hello There!</h2>
-						I'm Robin Rajan, a passionate Software Enginner with a keen interest in crafting robust
-						and scalable web applications. With a background in computer science and hands-on experience in
-						full-stack web development, I thrive on turning ideas into reality through elegant code and
-						innovative solutions.
-						<br>
-						<br>
-						<h4>Technical Expertise</h4>
-						I specialize in leveraging the power of Python and Django to build dynamic and feature-rich web
-						applications. My proficiency extends to:
-						<br>
-						<br>
-						<span style="font-weight: bolder;">Python Development:</span> I am well-versed in Python, using
-						it to develop backend logic and scripting tasks efficiently.
-						<br>
-						<br>
-						<span style="font-weight: bolder;"> Django Framework:</span> My expertise lies in utilizing the
-						Django framework to create secure, maintainable, and high-performance web applications. I am
-						experienced in designing RESTful APIs, integrating third-party services, and optimizing database
-						queries.
-						<br>
-						<br>
-						<span style="font-weight: bolder;">Frontend Technologies:</span> I have a strong command of
-						frontend technologies such as HTML, CSS, and JavaScript, enabling me to create seamless user
-						experiences.
-						<br>
-						<br>
-						<span style="font-weight: bolder;">Database Management:</span> I am skilled in working with
-						various databases, including PostgreSQL and MySQL, ensuring data integrity and efficient
-						retrieval.
-						<br>
-						<br>
-						<h4>What Sets Me Apart</h4>
+    <!-- Go to Top -->
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="fas fa-arrow-up"></i></a>
+    </div>
 
-						I am not just a developer; I am a problem solver. I approach each project with a holistic
-						mindset, considering both technical and user experience aspects. I believe in writing clean,
-						modular, and well-documented code that not only meets project requirements but is also easily
-						maintainable.
-						<br>
-						<br>
-						<h4>Open Source Contributions</h4>
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Robin Rajan",
+        "jobTitle": "Python Backend Developer",
+        "description": "Specializes in Django and Django Rest Framework (DRF) to create scalable web applications.",
+        "url": "https://robinrajan.com",
+        "sameAs": [
+            "https://github.com/Robin440",
+            "https://www.linkedin.com/in/robin-rajan-420699145/"
+        ]
+    }
+    </script>
 
-						I am an advocate for open source development and have actively contributed to projects on
-						platforms like GitHub. My commitment to the community reflects my dedication to continuous
-						learning and collaboration.
-						<br>
-						<br>
-						<h4>Let's Build Something Amazing</h4>
-						I am always eager to take on new challenges and collaborate on exciting projects. Whether you
-						need a custom web application, API development, or a Django-based solution, I am here to bring
-						your ideas to life.
+    <!-- GSAP Animations and Form Submission -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
-						Feel free to explore my portfolio to see some of my recent work and don't hesitate to get in
-						touch. Let's create something extraordinary together!
+        // Go to top button
+        window.addEventListener('scroll', () => {
+            const gototop = document.querySelector('.gototop');
+            gototop.classList.toggle('active', window.scrollY > 200);
+        });
 
+        // Hero section animations
+        gsap.from('.profile-thumb', { opacity: 0, scale: 0, duration: 1, delay: 0.5 });
+        gsap.from('h1', { opacity: 0, y: -50, duration: 1, delay: 0.7 });
+        gsap.from('h2', { opacity: 0, y: 50, duration: 1, delay: 0.9 });
+        gsap.from('h4', { opacity: 0, y: 50, duration: 1, delay: 1.1 });
+        gsap.from('.fab', { opacity: 0, y: 20, duration: 0.5, delay: 1.3, stagger: 0.1 });
 
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container mt-5">
-			<div class="row justify-content-center">
-				<div class="col-12 text-center">
-					<!-- Button with text "Tech Blogs" and inline styles -->
-					<a href="tech-blogs.html" class="btn btn-yellow" style="font-size: 24px; font-weight: bold;">
-						Tech Blogs <br> <span style="font-size: 16px; font-weight: normal;">Click Here</span>
-					</a>
-				</div>
-			</div>
-		</div>
+        // Section animations
+        gsap.utils.toArray('.section').forEach(section => {
+            gsap.to(section, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                }
+            });
+        });
 
-		<div id="fh5co-resume" class="fh5co-bg-color">
-			<div class="container">
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+        // Timeline panel animations
+        gsap.utils.toArray('.timeline-panel').forEach(panel => {
+            gsap.to(panel, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: panel,
+                    start: 'top 80%',
+                }
+            });
+        });
 
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 col-md-offset-0">
-						<ul class="timeline">
-							<li class="timeline-heading text-center animate-box">
-								<div>
-									<h3>Work Experience</h3>
-								</div>
-							</li>
-							<li class="animate-box timeline-unverted">
-								<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Software Engineer </h3>
-										<span class="company">Navadhiti (Bangalore - India) Sept 2024 - Present
-											2022 </span>
-									</div>
-									<div class="timeline-body">
-										• As a Software Engineer at Navadhiti, I specialize in backend development, utilizing Python frameworks
-										to deliver high-performance applications and scalable solutions. My expertise includes building APIs, cloud deployment, and system optimization.
-										<br>
-										<br>
+        // Service card animations
+        gsap.utils.toArray('.service-card').forEach(card => {
+            gsap.to(card, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: card,
+                    start: 'top 80%',
+                }
+            });
+        });
 
-										• Programming Languages: Python,Java,C
-										<br>
-										<br>
-										• Frameworks: Django, Flask, FastAPI
-										<br>
-										<br>
-										• Databases: MySQL, PostgreSQL
-										<br>
-										<br>
-										• Cloud Platforms: AWS
-										<br>
-										<br>
-										• Operating Systems: Ubuntu,Windows
-										<br>
-										<br>
-										• Web Servers: Nginx
-										<br>
-										<br>
-										• Agile Methodologies: Scrum
-										<br>
-										<br>
-										• Version Control Systems: Git,GitLab
-										<br>
-										<br>
-										• CI/CD Tools: Jenkins
-										<br>
-										<br>
-										• Testing Frameworks: Pytest
-										<br>
-										<br>
-										• Containerization & Deployment: Docker
-										<br>
-										<br>
-										• API Testing: Postman
-	
-										
-
-									</div>
-								</div>
-							</li>
-							<li class="timeline-inverted animate-box">
-								<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Backend Developer</h3>
-										<span class="company">Peerxp Vegastack (Bangalore - India) Feb 2024 - Present
-										</span>
-									</div>
-									<div class="timeline-body">
-										• As a Python Backend Developer, I design and implement server-side logic using Django Rest Framework (DRF) to build scalable and efficient web applications.
-										<br>
-										<br>
-										• Developed and maintained asynchronous task queues with Celery and RabbitMQ, improving application performance and reliability.
-										<br>
-										<br>
-							
-									
-										• Utilized Docker for containerization to streamline development, testing, and deployment processes.
-										<br>
-										<br>
-										• Employed Pandas and NumPy for data manipulation and analysis, enhancing data processing capabilities.
-										<br>
-										<br>
-										• Conducted API testing using Postman to ensure robust and error-free interfaces.
-										<br>
-										<br>
-										• Managed development environments and deployment processes on Ubuntu, ensuring smooth and consistent operations.
-										<br>
-										<br>
-										• Collaborated with cross-functional teams to define and develop new features, ensuring seamless integration and functionality.
-										<br>
-										<br>
-										• Prepared and maintained comprehensive documentation, including Standard Operating Procedures (SOPs) and work instructions.
-</div>
-								</div>
-							</li>
-							<li class="animate-box timeline-unverted">
-								<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Process Coordinator </h3>
-										<span class="company">Al Shirawi- Scania Automotive(Dubai-UAE) Jan 2022 - Nov
-											2022 </span>
-									</div>
-									<div class="timeline-body">
-										• Evaluating the process to identify improvement strategies and increase
-										efficiency and supervising technicians to complete jobs within time limits.
-										<br>
-										<br>
-
-										• Implementing lean management tools like 5S, Continuous Improvement,
-										Elimination of non-value added waste like Transportation, Inventories, moments,
-										waiting, overproduction, over process and defects (TIMWOOD).
-
-									</div>
-								</div>
-							</li>
-							<li class="timeline-inverted animate-box">
-								<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Team Leader & Production Associate</h3>
-										<span class="company">Festo-German MNC (Bangalore - India) July 2017 - Nov
-											2021</span>
-									</div>
-									<div class="timeline-body">
-
-										• As a team leader, I coordinated a team cluster including machining and
-										assembly as per the value stream guideline and by monitoring KPI.
-										<br>
-										<br>
-										•Designed fixture for laser marking station to reduce error by 25%.
-										<br>
-										<br>
-										•And directing a team, which includes 20 members to achieve our organizational
-										goals, which are Quality, Cost and Delivery.
-										<br>
-										<br>
-										•Created mechanical Poke Yoke to fixtures for reducing accidents by 80%.
-										<br>
-										<br>
-										•Reducing cycle time of production by 20 % by introducing by hand tools as part
-										of lean six sigma.
-										<br>
-										<br>
-										•Preparing SOP and work instruction.
-										<br>
-										<br>
-										•Assembling of pneumatic cylinder, one direction & two way flow control valves
-										and Direction Control Valves.
-										Leak testing of pneumatic cylinder, one direction & two way flow control valves
-										and Direction Control Valves
-										<!-- <p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p> -->
-										<!-- Als technischer Manager verfüge ich über umfassende Erfahrung in der Leitung von Technologieprojekten und der Entwicklung innovativer Lösungen. Meine Leidenschaft für technische Exzellenz und Teamführung treibt mich an, stets die besten Ergebnisse zu erz?ielen -->
-									</div>
-								</div>
-							</li>
-
-
-							<br>
-							<li class="timeline-heading text-center animate-box">
-								<div>
-									<h3>Education</h3>
-								</div>
-							</li>
-							<li class="timeline-unverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Masters in Business Administration</h3>
-										<span class="company">Lincoln University </span>
-									</div>
-									<div class="timeline-body">
-										<!-- <p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p> -->
-									</div>
-								</div>
-							</li>
-							<li class="timeline-inverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Bachelors in Business Adminstration</h3>
-										<span class="company">NEFTU </span>
-									</div>
-									<div class="timeline-body">
-										<!-- <p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p> -->
-									</div>
-								</div>
-							</li>
-							<li class="animate-box timeline-unverted">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Certified Management Accountant (Foundation).</h3>
-										<span class="company">Institute Of Cost Accountants Of India - Kolkata </span>
-									</div>
-									<div class="timeline-body">
-										<!-- <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
-									</div>
-								</div>
-							</li>
-							<li class="timeline-inverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Mechanical Engineering</h3>
-										<span class="company">Department of Technical Education - Chennai </span>
-									</div>
-									<div class="timeline-body">
-										<!-- <p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p> -->
-									</div>
-								</div>
-							</li>
-							<li class="timeline-heading text-center animate-box">
-								<div>
-									<h3>Certificates</h3>
-								</div>
-							</li>
-							<li class="timeline-unverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Lean Six Sigma Foundations</h3>
-										<span class="company">National Association of State Boards of Accountancy
-											(NASBA)</span>
-									</div>
-									<div class="timeline-body">
-										Instructional Delivery Method: QAS Self Study In accordance with the standards
-										of the National Registry of CPE Sponsors, CPE credits have been granted based on
-										a 50-minute hour. LinkedIn is registered with the National Association of State
-										Boards of Accountancy (NASBA) as a sponsor of continuing professional education
-										on the National Registry of CPE Sponsors. State boards of accountancy have final
-										authority on the acceptance of individual courses for CPE credit. Complaints
-										regarding registered sponsors may be submitted to the National Registry of CPE
-										Sponsors through its web site: www.nasbaregistry.org
-										<!-- <p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p> -->
-									</div>
-								</div>
-							</li>
-							<li class="timeline-inverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Six Sigma: Green Belt</h3>
-										<span class="company">Project Management Institute, Inc.</span>
-									</div>
-									<div class="timeline-body">
-										The PMI Registered Education Provider logo is a registered mark of the Project
-										Management Institute, Inc
-										<!-- Instructional Delivery Method: QAS Self Study In accordance with the standards of the National Registry of CPE Sponsors, CPE credits have been granted based on a 50-minute hour. LinkedIn is registered with the National Association of State Boards of Accountancy (NASBA) as a sponsor of continuing professional education on the National Registry of CPE Sponsors. State boards of accountancy have final authority on the acceptance of individual courses for CPE credit. Complaints regarding registered sponsors may be submitted to the National Registry of CPE Sponsors through its web site: www.nasbaregistry.org -->
-										<!-- <p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p> -->
-									</div>
-								</div>
-							</li>
-							<li class="timeline-unverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Soft Skills & Employability Skills Training</h3>
-										<span class="company">Cambridge University Press.</span>
-									</div>
-									<div class="timeline-body">
-										Cambridge Partnership for Education aims to improve education systems across the
-										globe through partnerships with various governments.
-										<!-- The PMI Registered Education Provider logo is a registered mark of the Project Management Institute, Inc -->
-										<!-- Instructional Delivery Method: QAS Self Study In accordance with the standards of the National Registry of CPE Sponsors, CPE credits have been granted based on a 50-minute hour. LinkedIn is registered with the National Association of State Boards of Accountancy (NASBA) as a sponsor of continuing professional education on the National Registry of CPE Sponsors. State boards of accountancy have final authority on the acceptance of individual courses for CPE credit. Complaints regarding registered sponsors may be submitted to the National Registry of CPE Sponsors through its web site: www.nasbaregistry.org -->
-										<!-- <p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p> -->
-									</div>
-								</div>
-							</li>
-
-							<li class="timeline-inverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Microsoft Intermediate Program</h3>
-										<span class="company">Microsoft Imagine Academy</span>
-									</div>
-									<div class="timeline-body">
-										The Microsoft Imagine Academy program was transitioned and sunset on December
-										30, 2022, however we want to provide educators with resources needed to complete
-										their current class schedule.
-										<!-- Instructional Delivery Method: QAS Self Study In accordance with the standards of the National Registry of CPE Sponsors, CPE credits have been granted based on a 50-minute hour. LinkedIn is registered with the National Association of State Boards of Accountancy (NASBA) as a sponsor of continuing professional education on the National Registry of CPE Sponsors. State boards of accountancy have final authority on the acceptance of individual courses for CPE credit. Complaints regarding registered sponsors may be submitted to the National Registry of CPE Sponsors through its web site: www.nasbaregistry.org -->
-										<!-- <p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p> -->
-									</div>
-								</div>
-							</li>
-							<li class="timeline-unverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Python Master</h3>
-										<span class="company">Udemy</span>
-									</div>
-									<div class="timeline-body">
-										UDEMY - Beginners Guide Into Python: Become a Master At Python
-									</div>
-								</div>
-							</li>
-							<li class="timeline-inverted animate-box">
-								<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Objected Oriented Programming</h3>
-										<span class="company">Udemy</span>
-									</div>
-									<div class="timeline-body">
-										UDEMY - Objected Oriented Programming (OOPS)
-									</div>
-								</div>
-							</li>
-							<li class="timeline-heading text-center animate-box">
-								<div>
-									<h3>Skills</h3>
-								</div>
-							</li>
-							<li class="timeline-inverted animate-box">
-								<div class="timeline-badge">⚙️</div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title"></h3>
-
-									</div>
-									<div class="timeline-body">
-										• Python.
-										<br>
-										<br>
-										• Django.
-										<br>
-										<br>
-										• Django Template language.
-										<br>
-										<br>
-										• RDBMS.
-										<br>
-										<br>
-										• Django ORM (Object Relation Mapper).
-										<br>
-										<br>
-										• PostgreSQL.
-										<br>
-										<br>
-										• Bootstrap.
-										<br>
-										<br>
-										• HTML 5.
-										<br>
-										<br>
-										• CSS 3.
-										<br>
-										<br>
-										• Object Oriented Programming .
-										<br>
-										<br>
-										• Microsoft Office.
-										<br>
-										<br>
-										• JavaScript (Basic).
-										<br>
-										<br>
-										• Java (basic).
-										<br>
-										<br>
-										• React.
-										<!-- <p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p> -->
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-		<div id="fh5co-features" class="animate-box">
-			<div class="container">
-				<div class="services-padding">
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-							<h2>My Services</h2>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4 text-center">
-							<div class="feature-left">
-								<span class="icon">
-									<i class="icon-paintbrush"></i>
-								</span>
-								<div class="feature-copy">
-									<h3>Web Developent</h3>
-									<p>Whether you're embarking on a new project, upgrading an existing application, or
-										exploring the capabilities of Python Django, I am here to guide you through the
-										journey of building robust and scalable web solutions. Let's turn your ideas
-										into reality with the power of Python Django web development!</p>
-									<!-- <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p> -->
-								</div>
-							</div>
-						</div>
-
-						<div class="col-md-4 text-center">
-							<div class="feature-left">
-								<span class="icon">
-									<i class="icon-briefcase"></i>
-								</span>
-								<div class="feature-copy">
-									<h3>Database Design</h3>
-									<p>Whether you're starting a new project or looking to optimize an existing
-										database, I am here to leverage the power of PostgreSQL to design a scalable,
-										efficient, and secure database solution tailored to your unique needs. Let's
-										embark on the journey of creating a data infrastructure that supports your
-										business goals..</p>
-								</div>
-							</div>
-
-						</div>
-						<div class="col-md-4 text-center">
-							<div class="feature-left">
-								<span class="icon">
-									<i class="icon-search"></i>
-								</span>
-								<div class="feature-copy">
-									<h3>Web Maintenance & Support </h3>
-									<p>Emergencies don't wait for office hours, and neither do we. Our 24/7 support
-										ensures that you have the assistance you need, precisely when you need it.Let's
-										work together to keep your web applications running smoothly, securely, and
-										ready to meet the evolving needs of your users.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-				</div>
-			</div>
-		</div>
-
-
-
-		<!-- <div id="fh5co-work" class="fh5co-bg-dark">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Work</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-1.jpg);">
-						<div class="desc">
-							<h3>Pet Health</h3>
-							<span> Tiergesundheit </span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-2.jpg);">
-						<div class="desc">
-							<h3>Convention energy</h3>
-							<span>Windenergie"</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-3.jpg);">
-						<div class="desc">
-							<h3>Manufacturing Technology</h3>
-							<span>Fertigungstechnologie</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-4.jpg);">
-						<div class="desc">
-							<h3>Self care Guide</h3>
-							<span>Selbstfürsorge</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-5.jpg);">
-						<div class="desc">
-							<h3>Pollution Analytics</h3>
-							<span>Umweltverschmutzungsanalytik</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-6.jpg);">
-						<div class="desc">
-							<h3>Transport Support</h3>
-							<span>Transportunterstützung</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-7.jpg);">
-						<div class="desc">
-							<h3>Artificial Intelligence</h3>
-							<span>Künstliche Intelligenz</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-8.jpg);">
-						<div class="desc">
-							<h3>Electronic Appliance </h3>
-							<span>Elektronisches Gerät</span>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-
-
-		<div id="fh5co-started" class="fh5co-bg-dark">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>Contact Me</h2>
-						<p>Let's work together to keep your web applications running smoothly, securely, and ready to
-							meet the evolving needs of your users..</p>
-						<p><a href="mailto:robinrajan440@outlook.com" class="btn btn-default btn-lg">Contact Us</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div id="fh5co-consult">
-			<div class="img-thumbnail shadow p-3 mb-5 bg-body rounded video fh5co-video"
-				style="background-image: url(images/stand.jpeg);">
-				<div class="overlay"></div>
-			</div>
-			<div class="choose animate-box">
-				<h2>Contact </h2>
-				<form action="#" id="submit-form">
-					<div class="row form-group">
-						<div class="col-md-6">
-							<input type="text" id="fname" class="form-control" placeholder="Your firstname" required>
-						</div>
-					</div>
-					<div class="row form-group">
-						<div class="col-md-6">
-							<input type="text" id="lname" class="form-control" placeholder="Your lastname" required>
-						</div>
-					</div>
-
-					<div class="row form-group">
-						<div class="col-md-12">
-							<input type="text" id="email" class="form-control" placeholder="Your email address"
-								required>
-						</div>
-					</div>
-
-					<div class="row form-group">
-						<div class="col-md-12">
-							<input type="text" id="subject" class="form-control"
-								placeholder="Your subject of this message" required>
-						</div>
-					</div>
-
-					<div class="row form-group">
-						<div class="col-md-12">
-							<textarea name="message" id="message" cols="30" rows="10" class="form-control"
-								placeholder="Say something about us" required></textarea>
-						</div>
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Send Message" class="btn btn-primary">
-					</div>
-
-				</form>
-
-			</div>
-
-		</div>
-
-		<div class=" container fh5co-map" style="height: 55vh;">
-			<iframe class="container" style="height: 50vh;" frameborder="0" scrolling="no" marginheight="0"
-				marginwidth="0"
-				src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=bommanahalli+(My%20Business%20Name)&amp;t=k&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a
-					href="https://www.maps.ie/population/">Population calculator map</a></iframe>
-			<!-- <iframe class="container" style="height: 50vh;" src="https://maps.google.com/maps?q=esslingen&amp;t=k&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" ></iframe><style>.mapouter{position:relative;height:400px;width:270px;background:#fff;} .maprouter a{color:#fff !important;position:absolute !important;top:0 !important;z-index:0 !important;}</style><style>.gmap_canvas{overflow:hidden;height:400px;width:270px}.gmap_canvas iframe{position:relative;z-index:2}</style></div></div> -->
-		</div>
-	</div>
-
-	<div id="fh5co-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<p>&copy; All Rights Reserved. <br>Designed by Robin Rajan </a></p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
-	</div>
-	<script>
-		$("#submit-form").submit((e) => {
-			e.preventDefault()
-			$.ajax({
-				url: "https://script.google.com/macros/s/AKfycbxld2cEW5uhHc2fkoJjW4tS8fNqT4R62GcgF1X-V44L8n1Jo3S6aZnybkxtGosUIcflsg/exec",
-				data: $("#submit-form").serialize(),
-				method: "post",
-				success: function (response) {
-					alert("Form submitted successfully / Formular erfolgreich übermittelt")
-					window.location.reload()
-					//window.location.href="https://google.com"
-				},
-				error: function (err) {
-					alert("Something Error")
-
-				}
-			})
-		})
-
-
-
-		<!-- Schema Markup -->
-		<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "Person",
-			"name": "Robin Rajan",
-			"jobTitle": "Python Backend Developer",
-			"description": "Specializes in Django and Django Rest Framework (DRF) to create scalable web applications.",
-			"url": "https://robinrajan.com",
-			"sameAs": [
-				"https://github.com/Robin440",
-				"https://www.linkedin.com/in/robin-rajan-420699145/"
-			]
-		}
-		</script>
-	
-
-
-	</script>
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Easy PieChart -->
-	<script src="js/jquery.easypiechart.min.js"></script>
-	<!-- Google Map -->
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
-
-	<!-- Main -->
-	<script src="js/main.js"></script>
-
+        // Form submission
+        $("#submit-form").submit((e) => {
+            e.preventDefault();
+            $.ajax({
+                url: "https://script.google.com/macros/s/AKfycbxld2cEW5uhHc2fkoJjW4tS8fNqT4R62GcgF1X-V44L8n1Jo3S6aZnybkxtGosUIcflsg/exec",
+                data: $("#submit-form").serialize(),
+                method: "post",
+                success: function (response) {
+                    alert("Form submitted successfully");
+                    window.location.reload();
+                },
+                error: function (err) {
+                    alert("Something Error");
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>

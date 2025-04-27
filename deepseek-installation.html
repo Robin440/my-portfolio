@@ -4,193 +4,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Install DeepSeek-R1 Locally</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Styles -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: #ffffff;
+            overflow-x: hidden;
         }
         .navbar {
-            background-color: #343a40;
+            transition: background-color 0.3s ease;
         }
-        .navbar-brand {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ffc107 !important;
+        .navbar.scrolled {
+            background-color: rgba(30, 58, 138, 0.9);
         }
         .blog-content {
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-top: 20px;
         }
-        .blog-title {
-            font-size: 28px;
-            font-weight: bold;
-            color: #343a40;
-        }
-        .blog-description {
-            font-size: 18px;
-            color: #6c757d;
-        }
         .code-block {
-            background-color: #f8f9fa;
-            padding: 10px;
-            border-radius: 5px;
+            background: #1e293b;
+            border-radius: 10px;
+            padding: 15px;
             font-family: 'Courier New', Courier, monospace;
-            margin: 10px 0;
-        }
-        footer {
-            background-color: #343a40;
-            color: white;
-            padding: 20px 0;
-            margin-top: 40px;
+            overflow-x: auto;
+            color: #e2e8f0;
         }
         .hashtag {
-            color: #007bff;
+            color: #facc15;
             font-weight: bold;
         }
         .img-fluid {
             border-radius: 10px;
             margin: 20px 0;
+            width: 100%;
+            max-width: 800px;
+        }
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .btn-back {
+            transition: background-color 0.3s ease;
+        }
+        .btn-back:hover {
+            background-color: #facc15;
         }
     </style>
 </head>
 <body>
-
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Tech Blogs</a>
+    <nav class="navbar fixed top-0 w-full py-4 z-50">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <a href="index.html" class="text-2xl font-bold">Tech Blogs</a>
+            <div class="space-x-6">
+                <a href="index.html#home" class="hover:text-yellow-300 transition">Home</a>
+                <a href="index.html#blogs" class="hover:text-yellow-300 transition">Blogs</a>
+                <a href="index.html#contact" class="hover:text-yellow-300 transition">Contact</a>
+            </div>
         </div>
     </nav>
 
     <!-- Blog Content -->
-    <div class="container mt-5">
-        <div class="blog-content">
-            <h1 class="blog-title">Run DeepSeek-R1 Locally for Free in Just 3 Minutes!</h1>
-            <p class="blog-description">
-                <span class="hashtag">#deepseek</span>
-                <span class="hashtag">#ai</span>
-                <span class="hashtag">#developer</span>
-                <span class="hashtag">#coding</span>
-            </p>
-            <p>
-                DeepSeek-R1 has been creating quite a buzz in the AI community. Developed by a Chinese AI company DeepSeek, this model is being compared to OpenAI's top models. The excitement around DeepSeek-R1 is not just because of its capabilities but also because it is open-sourced, allowing anyone to download and run it locally. In this blog, I'll guide you through setting up DeepSeek-R1 on your machine using Ollama.
-            </p>
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="blog-content section">
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Run DeepSeek-R1 Locally for Free in Just 3 Minutes!</h1>
+                <p class="text-lg mb-4">
+                    <span class="hashtag">#deepseek</span>
+                    <span class="hashtag">#ai</span>
+                    <span class="hashtag">#developer</span>
+                    <span class="hashtag">#coding</span>
+                </p>
+                <p class="text-lg mb-6">
+                    DeepSeek-R1 has been creating quite a buzz in the AI community. Developed by a Chinese AI company DeepSeek, this model is being compared to OpenAI's top models. The excitement around DeepSeek-R1 is not just because of its capabilities but also because it is open-sourced, allowing anyone to download and run it locally. In this blog, I'll guide you through setting up DeepSeek-R1 on your machine using Ollama.
+                </p>
 
+                <h2 class="text-2xl font-semibold mb-4">Why DeepSeek-R1?</h2>
+                <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Furnvaynx1lftafcsbeie.png" class="img-fluid" alt="DeepSeek-R1 Overview">
+                <p class="text-lg mb-4">
+                    DeepSeek-R1 stands out for several reasons:
+                </p>
+                <ul class="list-disc pl-6 mb-6">
+                    <li><strong>Cost-Effective</strong>: It is cheaper than many other AI models.</li>
+                    <li><strong>Problem-Solving</strong>: Excels in reasoning and coding tasks.</li>
+                    <li><strong>Chain-of-Thought Reasoning</strong>: Built-in reasoning capabilities make it highly efficient.</li>
+                    <li><strong>Open-Source</strong>: Freely available for anyone to use and modify.</li>
+                </ul>
 
+                <h2 class="text-2xl font-semibold mb-4">Getting Started with Ollama</h2>
+                <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-Uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fzs14jj69iuu1m20yjroi.png" class="img-fluid" alt="Ollama Overview">
+                <p class="text-lg mb-6">
+                    Before we begin, let's discuss Ollama. Ollama is a free, open-source tool that allows users to run Natural Language Processing models locally. With Ollama, you can easily download and run the DeepSeek-R1 model.
+                </p>
 
-            <h2>Why DeepSeek-R1?</h2>
-            <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Furnvaynx1lftafcsbeie.png" class="img-fluid" alt="Responsive image">
-            <p>
-                DeepSeek-R1 stands out for several reasons:
-            </p>
-            <ul>
-                <li><strong>Cost-Effective</strong>: It is cheaper than many other AI models.</li>
-                <li><strong>Problem-Solving</strong>: Excels in reasoning and coding tasks.</li>
-                <li><strong>Chain-of-Thought Reasoning</strong>: Built-in reasoning capabilities make it highly efficient.</li>
-                <li><strong>Open-Source</strong>: Freely available for anyone to use and modify.</li>
-            </ul>
+                <h3 class="text-xl font-semibold mb-3">Step 1: Install Ollama</h3>
+                <p class="text-lg mb-4">
+                    First, you'll need to download and install Ollama. Visit the <a href="https://ollama.ai" target="_blank" class="text-yellow-400 hover:underline">Ollama website</a> and download the version that matches your operating system. Follow the installation instructions provided on the site.
+                </p>
+                <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-Uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fettkoobbuh63ia4khm34.png" class="img-fluid" alt="Install Ollama">
 
-            <h2>Getting Started with Ollama</h2>
-            <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fzs14jj69iuu1m20yjroi.png" class="img-fluid" alt="Responsive image">
-            <p>
-                Before we begin, let's discuss Ollama. Ollama is a free, open-source tool that allows users to run Natural Language Processing models locally. With Ollama, you can easily download and run the DeepSeek-R1 model.
-            </p>
+                <h3 class="text-xl font-semibold mb-3">Step 2: Download DeepSeek-R1</h3>
+                <p class="text-lg mb-4">
+                    As you can see when you go to Ollama website, you can run the different parameters of DeepSeek-R1. You can find the details of requirements <a href="https://ollama.com/library/deepseek-r1" class="text-yellow-400 hover:underline">here</a> (as shown above in the screenshot).
+                </p>
+                <p class="text-lg mb-4">
+                    You can run 1.5b, 7b, 8b, 14b, 32b, 70b, 671b and obviously the hardware requirements increase as you choose bigger parameter. I used 7b one in my tutorial.
+                </p>
+                <p class="text-lg mb-4">
+                    Once Ollama is installed, open your terminal and type the following command to download the DeepSeek-R1 model:
+                </p>
+                <div class="code-block">
+                    ollama run deepseek-r1
+                </div>
+                <p class="text-lg mb-4">
+                    This command tells Ollama to download the model. Depending on your internet speed, this might take some time. Grab a coffee while it completes!
+                </p>
+                <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-Uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fw0v7zymeuonp10lqi3bq.png" class="img-fluid" alt="Download DeepSeek-R1">
 
-     
-            <h3>Step 1: Install Ollama</h3>
-            <p>
-                First, you'll need to download and install Ollama. Visit the <a href="https://ollama.ai" target="_blank">Ollama website</a> and download the version that matches your operating system. Follow the installation instructions provided on the site.
-            </p>
+                <h3 class="text-xl font-semibold mb-3">Step 3: Verify Installation</h3>
+                <p class="text-lg mb-4">
+                    After downloading, verify the installation by running:
+                </p>
+                <div class="code-block">
+                    ollama list
+                </div>
+                <p class="text-lg mb-4">
+                    You should see <code>deepseek-r1</code> in the list of available models. If you do, great job! You're ready to run the model.
+                </p>
+                <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-Uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkhussr4gr1i11yrf02ri.png" class="img-fluid" alt="Verify Installation">
 
-            <!-- Image: Install Ollama -->
-            <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fettkoobbuh63ia4khm34.png" alt="Install Ollama" class="img-fluid">
+                <h3 class="text-xl font-semibold mb-3">Step 4: Run DeepSeek-R1</h3>
+                <p class="text-lg mb-4">
+                    Now, let's start the model using the command:
+                </p>
+                <div class="code-block">
+                    ollama run deepseek-r1
+                </div>
+                <p class="text-lg mb-4">
+                    And just like that, you're interacting with DeepSeek-R1 locally. It's that simple!
+                </p>
 
-            <h3>Step 2: Download DeepSeek-R1</h3>
-            <p>
-                As you can see when you go to Ollama website, you can run the different parameters of DeepSeek-R1. You can find the details of requirements <a href="https://ollama.com/library/deepseek-r1">here</a> (as shown above in the screenshot).
-            </p>
-            <p>
-                You can run 1.5b, 7b, 8b, 14b, 32b, 70b, 671b and obviously the hardware requirements increase as you choose bigger parameter. I used 7b one in my tutorial.
-            </p>
-            <p>
-                Once Ollama is installed, open your terminal and type the following command to download the DeepSeek-R1 model:
-            </p>
-            <div class="code-block">
-                ollama run deepseek-r1
+                <h3 class="text-xl font-semibold mb-3">Step 5: Ask a Query</h3>
+                <p class="text-lg mb-4">
+                    The model looks good with coding tasks also. Let's check that approach too.
+                </p>
+                <p class="text-lg mb-4">
+                    Below is a complete step-by-step video of using DeepSeek-R1 for different use cases.
+                </p>
+                <img src="https://via.placeholder.com/800x400?text=Ask+a+Query" class="img-fluid" alt="Ask a Query">
+
+                <h2 class="text-2xl font-semibold mb-4">Additional Tips</h2>
+                <ul class="list-disc pl-6 mb-6">
+                    <li><strong>Hardware Requirements</strong>: Ensure your machine meets the hardware requirements for the model size you choose.</li>
+                    <li><strong>Regular Updates</strong>: Keep Ollama and DeepSeek-R1 updated to the latest versions for optimal performance.</li>
+                    <li><strong>Community Support</strong>: Join the DeepSeek and Ollama communities for troubleshooting and tips.</li>
+                </ul>
+
+                <h2 class="text-2xl font-semibold mb-4">My First Impression About DeepSeek-R1</h2>
+                <p class="text-lg mb-6">
+                    My first impression about DeepSeek-R1 is just mind-blowing! It’s fast, efficient, and incredibly versatile for coding and problem-solving tasks.
+                </p>
+
+                <a href="index.html" class="btn-back bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition">Back to Portfolio</a>
             </div>
-            <p>
-                This command tells Ollama to download the model. Depending on your internet speed, this might take some time. Grab a coffee while it completes!
-            </p>
-
-            <!-- Image: Download DeepSeek-R1 -->
-            <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fw0v7zymeuonp10lqi3bq.png" alt="Download DeepSeek-R1" class="img-fluid">
-
-            <h3>Step 3: Verify Installation</h3>
-            <p>
-                After downloading, verify the installation by running:
-            </p>
-            <div class="code-block">
-                ollama list
-            </div>
-            <p>
-                You should see <code>deepseek-r1</code> in the list of available models. If you do, great job! You're ready to run the model.
-            </p>
-
-            <!-- Image: Verify Installation -->
-            <img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkhussr4gr1i11yrf02ri.png" alt="Verify Installation" class="img-fluid">
-
-            <h3>Step 4: Run DeepSeek-R1</h3>
-            <p>
-                Now, let's start the model using the command:
-            </p>
-            <div class="code-block">
-                ollama run deepseek-r1
-            </div>
-            <p>
-                And just like that, you're interacting with DeepSeek-R1 locally. It's that simple!
-            </p>
-
-          
-            <h3>Step 5: Ask a Query</h3>
-            <p>
-                The model looks good with coding tasks also. Let's check that approach too.
-            </p>
-            <p>
-                Below is a complete step-by-step video of using DeepSeek-R1 for different use cases.
-            </p>
-
-            <!-- Image: Ask a Query -->
-            <img src="https://via.placeholder.com/800x400?text=Ask+a+Query" alt="Ask a Query" class="img-fluid">
-
-            <h2>Additional Tips</h2>
-            <ul>
-                <li><strong>Hardware Requirements</strong>: Ensure your machine meets the hardware requirements for the model size you choose.</li>
-                <li><strong>Regular Updates</strong>: Keep Ollama and DeepSeek-R1 updated to the latest versions for optimal performance.</li>
-                <li><strong>Community Support</strong>: Join the DeepSeek and Ollama communities for troubleshooting and tips.</li>
-            </ul>
-
-            <h2>My First Impression About DeepSeek-R1</h2>
-            <p>
-                My first impression about DeepSeek-R1 is just mind-blowing! It’s fast, efficient, and incredibly versatile for coding and problem-solving tasks.
-            </p>
-
-            <a href="index.html" class="btn btn-warning">Back to Home</a>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="text-center">
-        <p>&copy; 2025 Tech Blogs. All rights reserved.</p>
+    <footer class="py-10 bg-gray-900 text-center">
+        <p>© 2025 Tech Blogs. All rights reserved.</p>
+        <div class="mt-4 space-x-4">
+            <a href="https://x.com/yourprofile" target="_blank" class="hover:text-yellow-400"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://github.com/your-repo" target="_blank" class="hover:text-yellow-400"><i class="fab fa-github"></i></a>
+        </div>
     </footer>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- GSAP Animations -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Hero text animation
+        gsap.from('h1', { opacity: 0, y: -50, duration: 1, delay: 0.5 });
+        gsap.from('.hashtag', { opacity: 0, y: 20, duration: 0.5, delay: 0.7, stagger: 0.1 });
+        gsap.from('.btn-back', { scale: 0, duration: 0.5, delay: 1 });
+
+        // Section and image animations
+        gsap.utils.toArray('.section, .img-fluid').forEach(element => {
+            gsap.to(element, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 80%',
+                }
+            });
+        });
+    </script>
 </body>
 </html>

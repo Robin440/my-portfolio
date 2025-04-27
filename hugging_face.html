@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Vlog: Audio Transcription & Speaker Diarization</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .tool-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .code-snippet {
+            background: #1e293b;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+        .navbar {
+            transition: background-color 0.3s ease;
+        }
+        .navbar.scrolled {
+            background-color: rgba(30, 58, 138, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar fixed top-0 w-full py-4 z-50">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-2xl font-bold">Tech Vlog</h1>
+            <div class="space-x-6">
+                <a href="#home" class="hover:text-yellow-300 transition">Home</a>
+                <a href="#project" class="hover:text-yellow-300 transition">Project</a>
+                <a href="#tools" class="hover:text-yellow-300 transition">Tools</a>
+                <a href="#code" class="hover:text-yellow-300 transition">Code</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center text-center section">
+        <div class="container mx-auto px-6">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Audio Transcription & Speaker Diarization</h1>
+            <p class="text-xl md:text-2xl mb-8">Dive into our latest project using AI to transcribe audio and identify speakers!</p>
+            <a href="#project" class="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition">Explore Now</a>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section id="project" class="py-20 section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center">Project Overview</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-4">What It Does</h3>
+                    <p>This project leverages AI to transcribe audio files and perform speaker diarization, identifying who speaks when. Using Whisper for transcription and Pyannote for diarization, it processes audio into a JSON output with timestamps, speaker IDs, and text.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-6 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-4">Tech Stack</h3>
+                    <ul class="list-disc pl-6">
+                        <li>Python: Core programming language</li>
+                        <li>Whisper (OpenAI): Speech-to-text transcription</li>
+                        <li>Pyannote: Speaker diarization</li>
+                        <li>Hugging Face: Model hosting and authentication</li>
+                        <li>Torch & Torchaudio: Audio processing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="py-20 bg-gray-900 section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center">Tools & Technologies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="tool-card bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                    <i class="fas fa-microphone-alt text-4xl mb-4 text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold mb-2">Whisper</h3>
+                    <p>OpenAI's Whisper model for high-accuracy audio transcription.</p>
+                    <a href="https://huggingface.co/openai/whisper-tiny" target="_blank" class="text-yellow-400 hover:underline">Learn More</a>
+                </div>
+                <div class="tool-card bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                    <i class="fas fa-users text-4xl mb-4 text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold mb-2">Pyannote</h3>
+                    <p>Advanced speaker diarization to identify speakers in audio.</p>
+                    <a href="https://huggingface.co/pyannote/speaker-diarization-3.1" target="_blank" class="text-yellow-400 hover:underline">Learn More</a>
+                </div>
+                <div class="tool-card bg-white bg-opacity-10 p-6 rounded-lg text-center">
+                    <i class="fas fa-code text-4xl mb-4 text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold mb-2">Hugging Face</h3>
+                    <p>Platform for model hosting and authentication.</p>
+                    <a href="https://huggingface.co/" target="_blank" class="text-yellow-400 hover:underline">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Snippet Section -->
+    <section id="code" class="py-20 section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center">Code Highlight</h2>
+            <div class="code-snippet">
+                <pre><code class="text-gray-200">
+import torch
+from transformers import pipeline
+from pyannote.audio import Pipeline
+
+# Load Whisper for transcription
+transcriber = pipeline(
+    "automatic-speech-recognition",
+    model="openai/whisper-tiny",
+    device=0 if torch.cuda.is_available() else -1
+)
+
+# Load Pyannote for diarization
+diarizer = Pipeline.from_pretrained(
+    "pyannote/speaker-diarization-3.1",
+    use_auth_token=os.getenv("HF_TOKEN")
+)
+                </code></pre>
+            </div>
+            <div class="text-center mt-6">
+                <a href="https://github.com/your-repo" target="_blank" class="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition">View Full Code on GitHub</a>
+            </div>
+        </div>
+    </section>
+    <div class="container  py-20 bg-gray-900 d-flex justify-center">
+        <a href="index.html" class="btn-back bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition">Back to Portfolio</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-gray-900 text-center">
+        <p>&copy; 2025 Tech Vlog. All rights reserved.</p>
+        <div class="mt-4 space-x-4">
+            <a href="https://x.com/yourprofile" target="_blank" class="hover:text-yellow-400"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://github.com/your-repo" target="_blank" class="hover:text-yellow-400"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <!-- GSAP Animations -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Section animations
+        gsap.utils.toArray('.section').forEach(section => {
+            gsap.to(section, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                }
+            });
+        });
+
+        // Hero text animation
+        gsap.from('h1', { opacity: 0, y: -50, duration: 1, delay: 0.5 });
+        gsap.from('p', { opacity: 0, y: 50, duration: 1, delay: 0.7 });
+        gsap.from('.bg-yellow-400', { scale: 0, duration: 0.5, delay: 1 });
+    </script>
+</body>
+</html>
